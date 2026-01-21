@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import API from "../services/api";
 
-const Internships = () => {
+export default function Internships() {
   const [internships, setInternships] = useState([]);
 
   useEffect(() => {
@@ -18,13 +18,10 @@ const Internships = () => {
       <h2>Internships</h2>
       {internships.map((i) => (
         <div key={i._id}>
-          <h3>{i.title}</h3>
-          <p>{i.company}</p>
+          <h4>{i.title} - {i.company}</h4>
           <button onClick={() => apply(i._id)}>Apply</button>
         </div>
       ))}
     </div>
   );
-};
-
-export default Internships;
+}
