@@ -10,18 +10,21 @@ export default function AdminDashboard() {
 
   const updateStatus = async (id, status) => {
     await API.put(`/applications/${id}/status`, { status });
-    alert("Status updated");
     window.location.reload();
   };
 
   return (
-    <div>
+    <div className="container">
       <h2>Admin Dashboard</h2>
       {apps.map((a) => (
-        <div key={a._id}>
-          <p>{a.userId.name} applied for {a.internshipId.title}</p>
-          <button onClick={() => updateStatus(a._id, "Approved")}>Approve</button>
-          <button onClick={() => updateStatus(a._id, "Rejected")}>Reject</button>
+        <div className="card" key={a._id}>
+          <p><b>{a.userId.name}</b> applied for <b>{a.internshipId.title}</b></p>
+          <button className="admin-btn" onClick={() => updateStatus(a._id, "Approved")}>
+            Approve
+          </button>
+          <button className="reject-btn" onClick={() => updateStatus(a._id, "Rejected")}>
+            Reject
+          </button>
         </div>
       ))}
     </div>

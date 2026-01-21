@@ -1,0 +1,87 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* PAGE */
+body {
+  background-color: #f4f6f8;
+}
+
+/* CONTAINER */
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+/* CARD */
+.card {
+  background: white;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* HEADINGS */
+h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* INPUTS */
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* BUTTONS */
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #1976d2;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #125aa0;
+}
+
+/* STATUS */
+.status {
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.status.Applied {
+  color: orange;
+}
+
+.status.Approved {
+  color: green;
+}
+
+.status.Rejected {
+  color: red;
+}
+
+/* ADMIN BUTTONS */
+.admin-btn {
+  margin-right: 10px;
+  background-color: #2e7d32;
+}
+
+.reject-btn {
+  background-color: #d32f2f;
+}
+

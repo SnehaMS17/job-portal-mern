@@ -9,12 +9,13 @@ export default function MyApplications() {
   }, []);
 
   return (
-    <div>
+    <div className="container">
       <h2>My Applications</h2>
       {apps.map((a) => (
-        <p key={a._id}>
-          {a.internshipId.title} - {a.status}
-        </p>
+        <div className="card" key={a._id}>
+          <h3>{a.internshipId.title}</h3>
+          <p className={`status ${a.status}`}>{a.status}</p>
+        </div>
       ))}
     </div>
   );

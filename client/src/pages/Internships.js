@@ -9,16 +9,21 @@ export default function Internships() {
   }, []);
 
   const apply = async (id) => {
-    await API.post("/applications/apply", { internshipId: id });
-    alert("Applied successfully");
+    try {
+      await API.post("/applications/apply", { internshipId: id });
+      alert("Applied successfully");
+    } catch (err) {
+      alert(err.response?.data?.message || "Apply failed");
+    }
   };
 
   return (
-    <div>
+    <div className="container">
       <h2>Internships</h2>
       {internships.map((i) => (
-        <div key={i._id}>
-          <h4>{i.title} - {i.company}</h4>
+        <div className="card" key={i._id}>
+          <h3>{i.title} - {i.company}</h3>
+          <p>{i.description}</p>
           <button onClick={() => apply(i._id)}>Apply</button>
         </div>
       ))}

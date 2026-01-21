@@ -4,6 +4,7 @@ import Register from "./pages/Register";
 import Internships from "./pages/Internships";
 import MyApplications from "./pages/MyApplications";
 import AdminDashboard from "./pages/AdminDashboard";
+import "./App.css";
 
 function App() {
   return (
