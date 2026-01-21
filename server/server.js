@@ -4,7 +4,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 const authRoutes = require("./routes/authRoutes");
-
+const internshipRoutes = require("./routes/internshipRoutes");
 const app = express();
 
 // middleware
@@ -19,7 +19,7 @@ mongoose
 
 // auth routes
 app.use("/api/auth", authRoutes);
-
+app.use("/api/internships", internshipRoutes);
 // test route
 app.get("/", (req, res) => {
   res.send("Job Portal API is running");
