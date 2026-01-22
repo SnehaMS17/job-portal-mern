@@ -22,6 +22,8 @@ mongoose
 app.use("/api/auth", authRoutes);
 app.use("/api/internships", internshipRoutes);
 app.use("/api/applications", applicationRoutes);
+app.use("/api/internships", require("./routes/internshipRoutes"));
+
 // test route
 app.get("/", (req, res) => {
   res.send("Job Portal API is running");

@@ -1,87 +1,665 @@
-/* RESET */
+/* /* =======================
+   GLOBAL RESET
+======================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: "Segoe UI", sans-serif;
 }
 
-/* PAGE */
 body {
-  background-color: #f4f6f8;
+  background-color: #f5f7fb;
+  color: #333;
+   font-size: 16px;
 }
 
-/* CONTAINER */
+/* =======================
+   NAVBAR
+======================= */
+.navbar {
+  background: #ffffff;
+  padding: 16px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.navbar h2 {
+  color: #4f46e5;
+}
+
+.navbar a {
+  margin-left: 16px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.navbar button {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* =======================
+   PAGE CONTAINER (WIDE)
+======================= */
 .container {
-  width: 90%;
-  max-width: 900px;
+  max-width: 1500px;
   margin: 40px auto;
+  padding: 0 24px;
 }
 
-/* CARD */
-.card {
-  background: white;
-  padding: 20px;
-  margin-bottom: 15px;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+/* =======================
+   HERO
+======================= */
+.hero {
+  height: 80vh;
+  background: linear-gradient(120deg, #eef2ff, #f5f7fb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* HEADINGS */
-h2 {
-  margin-bottom: 20px;
+.hero-content {
+  max-width: 700px;
   text-align: center;
 }
 
-/* INPUTS */
+.hero-content h1 {
+  font-size: 44px;
+  margin-bottom: 16px;
+}
+
+.hero-content p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 32px;
+}
+
+.secondary-btn {
+  background: white;
+  color: #4f46e5;
+  border: 2px solid #4f46e5;
+  padding: 12px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* =======================
+   AUTH
+======================= */
+.auth-card {
+  max-width: 440px;
+  margin: 80px auto;
+  background: white;
+  padding: 34px;
+  border-radius: 14px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+}
+
+.auth-card h2 {
+  margin-bottom: 10px;
+}
+
+.auth-card p {
+  margin-bottom: 20px;
+  color: #666;
+}
+
 input {
   width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border-radius: 4px;
+  padding: 14px;
+  margin-bottom: 16px;
+  border-radius: 8px;
   border: 1px solid #ccc;
 }
 
-/* BUTTONS */
-button {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  background-color: #1976d2;
+.primary-btn {
+  width: 100%;
+  background: #4f46e5;
   color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 16px;
   cursor: pointer;
-  margin-top: 10px;
 }
 
-button:hover {
-  background-color: #125aa0;
+/* =======================
+   THREE COLUMN LAYOUT (WIDE)
+======================= */
+.three-column-layout {
+  display: grid;
+  grid-template-columns: 340px 1fr 320px;
+  gap: 36px;
+  align-items: flex-start;
 }
 
-/* STATUS */
+/* =======================
+   LEFT FILTER PANEL
+======================= */
+.left-panel {
+  background: white;
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  top: 90px;
+}
+
+/* FILTER GROUP */
+.filter-group {
+  margin-bottom: 26px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #eee;
+}
+
+.filter-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.filter-title h4 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* FILTER OPTIONS */
+.filter-option {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  column-gap: 12px;
+  align-items: flex-start; /* 🔑 KEY FIX */
+  margin-bottom: 14px;
+  cursor: pointer;
+}
+
+.filter-option input {
+  width: 16px;
+  height: 16px;
+  margin: 3px 0 0 0; /* 🔑 locks checkbox to text top */
+  accent-color: #4f46e5;
+}
+
+.filter-text {
+  font-size: 16px;
+  line-height: 1.5; /* stable line height */
+  color: #333;
+}
+
+
+/* FILTER SEARCH */
+.filter-search {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+}
+
+/* =======================
+   CENTER JOB LIST
+======================= */
+.center-panel h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+/* SEARCH BAR */
+.job-search {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 18px;
+  margin-bottom: 24px;
+}
+
+/* JOB ROW */
+.job-row {
+  background: white;
+  padding: 30px 32px;
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.job-row:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.job-row h3 {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.company {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.meta {
+  font-size: 14px;
+  color: #777;
+}
+
+.job-row button {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* =======================
+   BADGES
+======================= */
+.badges {
+  margin-bottom: 10px;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-right: 8px;
+  font-weight: 500;
+}
+
+.badge.blue {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.badge.green {
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* =======================
+   RIGHT PANEL
+======================= */
+.right-panel {
+  background: white;
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.company-box {
+  background: #f4f6ff;
+  padding: 14px;
+  border-radius: 10px;
+  margin-top: 12px;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* =======================
+   STATUS
+======================= */
 .status {
   font-weight: bold;
-  margin-top: 5px;
 }
 
-.status.Applied {
-  color: orange;
+.status.Applied { color: orange; }
+.status.Approved { color: green; }
+.status.Rejected { color: red; } */
+
+/* =======================
+   GLOBAL RESET
+======================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
 }
 
-.status.Approved {
-  color: green;
+html, body {
+  height: 100%;
 }
 
-.status.Rejected {
-  color: red;
+body {
+  background-color: #f5f7fb;
+  color: #333;
+  font-size: 16px;
 }
 
-/* ADMIN BUTTONS */
-.admin-btn {
-  margin-right: 10px;
-  background-color: #2e7d32;
+/* =======================
+   NAVBAR
+======================= */
+.navbar {
+  background: #ffffff;
+  padding: 16px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.reject-btn {
-  background-color: #d32f2f;
+.navbar h2 {
+  color: #4f46e5;
+  font-size: 22px;
 }
 
+.navbar a {
+  margin-left: 18px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.navbar button {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* =======================
+   PAGE CONTAINER (RESPONSIVE WIDE)
+======================= */
+.container {
+  max-width: 1600px;
+  margin: 40px auto;
+  padding: 0 32px;
+  overflow: visible;
+}
+
+/* =======================
+   HERO
+======================= */
+.hero {
+  height: 80vh;
+  background: linear-gradient(120deg, #eef2ff, #f5f7fb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  max-width: 720px;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 44px;
+  margin-bottom: 16px;
+}
+
+.hero-content p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 32px;
+}
+
+.secondary-btn {
+  background: white;
+  color: #4f46e5;
+  border: 2px solid #4f46e5;
+  padding: 12px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* =======================
+   THREE COLUMN LAYOUT (RESPONSIVE)
+======================= */
+.three-column-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 360px) 1fr minmax(280px, 340px);
+  gap: 36px;
+  align-items: flex-start;
+}
+
+/* =======================
+   LEFT FILTER PANEL (STICKY)
+======================= */
+.left-panel {
+  background: white;
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+
+  position: sticky;
+  top: 90px;
+  align-self: start;
+}
+
+/* FILTER GROUP */
+.filter-group {
+  margin-bottom: 26px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #eee;
+}
+
+.filter-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.filter-title h4 {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/* FILTER OPTIONS (STABLE ALIGNMENT) */
+.filter-option {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  column-gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 14px;
+  cursor: pointer;
+}
+
+.filter-option input {
+  width: 16px;
+  height: 16px;
+  margin: 3px 0 0 0;
+  accent-color: #4f46e5;
+}
+
+.filter-text {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* FILTER SEARCH */
+.filter-search {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+}
+
+/* =======================
+   CENTER JOB LIST
+======================= */
+.center-panel h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+/* SEARCH BAR */
+.job-search {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 18px;
+  margin-bottom: 24px;
+}
+
+/* JOB ROW */
+.job-row {
+  background: white;
+  padding: 30px 32px;
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  margin-bottom: 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.job-row:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.job-row h3 {
+  font-size: 21px;
+  margin-bottom: 6px;
+}
+
+.company {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.meta {
+  font-size: 15px;
+  color: #777;
+}
+
+.job-row button {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* =======================
+   BADGES
+======================= */
+.badges {
+  margin-bottom: 10px;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 14px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-right: 8px;
+  font-weight: 500;
+}
+
+.badge.blue {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.badge.green {
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* =======================
+   RIGHT PANEL
+======================= */
+.right-panel {
+  background: white;
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.company-box {
+  background: #f4f6ff;
+  padding: 14px;
+  border-radius: 10px;
+  margin-top: 12px;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* =======================
+   STATUS
+======================= */
+.status {
+  font-weight: bold;
+}
+
+.status.Applied { color: orange; }
+.status.Approved { color: green; }
+.status.Rejected { color: red; }
+
+/* =======================
+   RESPONSIVE BREAKPOINTS
+======================= */
+@media (max-width: 1200px) {
+  .three-column-layout {
+    grid-template-columns: minmax(260px, 300px) 1fr;
+  }
+
+  .right-panel {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .three-column-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .left-panel {
+    position: static;
+    margin-bottom: 24px;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin: 40px 0;
+}
+
+.pagination button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  background: #4f46e5;
+  color: white;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}

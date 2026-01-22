@@ -1,38 +1,57 @@
 const express = require("express");
-const Internship = require("../models/Internship");
-const { protect, adminOnly } = require("../middleware/authMiddleware");
-
 const router = express.Router();
+const Internship = require("../models/Internship");
 
-// Get all internships (Public)
+/**
+ * GET /api/internships
+ * Query params:
+ *  - search
+ *  - workType
+ *  - page
+ *  - limit
+ */
 router.get("/", async (req, res) => {
-  const internships = await Internship.find();
-  res.json(internships);
-});
+  try {
+    const {
+      search = "",
+      workType,
+      page = 1,
+      limit = 6,
+    } = req.query;
 
-// Create internship (Admin)
-router.post("/", protect, adminOnly, async (req, res) => {
-  const internship = await Internship.create({
-    ...req.body,
-    createdBy: req.user.id,
-  });
-  res.status(201).json(internship);
-});
+    const query = {};
 
-// Update internship (Admin)
-router.put("/:id", protect, adminOnly, async (req, res) => {
-  const updated = await Internship.findByIdAndUpdate(
-    req.params.id,
-    req.body,
-    { new: true }
-  );
-  res.json(updated);
-});
+    // 🔍 Search by title or company
+    if (search) {
+      query.$or = [
+        { title: { $regex: search, $options: "i" } },
+        { company: { $regex: search, $options: "i" } },
+      ];
+    }
 
-// Delete internship (Admin)
-router.delete("/:id", protect, adminOnly, async (req, res) => {
-  await Internship.findByIdAndDelete(req.params.id);
-  res.json({ message: "Internship deleted" });
+    // 🎯 Work type filter
+    if (workType) {
+      query.workType = workType;
+    }
+
+    const skip = (page - 1) * limit;
+
+    const total = await Internship.countDocuments(query);
+
+    const internships = await Internship.find(query)
+      .skip(skip)
+      .limit(Number(limit))
+      .sort({ createdAt: -1 });
+
+    res.json({
+      internships,
+      totalPages: Math.ceil(total / limit),
+      currentPage: Number(page),
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
 });
 
 module.exports = router;
