@@ -6,6 +6,7 @@ const internshipSchema = new mongoose.Schema(
     company: String,
     location: String,
     workType: String, // Full time / Part time / Internship
+    workMode: String, // Remote | On-site | Hybrid
   },
   { timestamps: true }
 );

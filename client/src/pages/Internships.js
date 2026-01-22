@@ -8,6 +8,8 @@ const [search, setSearch] = useState("");
 const [page, setPage] = useState(1);
 const [totalPages, setTotalPages] = useState(1);
 const [workType, setWorkType] = useState("");
+const [workMode, setWorkMode] = useState("");
+
 const token = localStorage.getItem("token");
 
 useEffect(() => {
@@ -15,6 +17,7 @@ useEffect(() => {
     params: {
       search,
       workType,
+      workMode,
       page,
       limit: 6,
     },
@@ -26,7 +29,11 @@ useEffect(() => {
     .catch(() => {
       setJobs([]);
     });
-}, [search, workType, page]);
+}, [search, workType, workMode, page]);
+useEffect(() => {
+  setPage(1);
+}, [search, workType, workMode]);
+
 
   const apply = async (id) => {
     if (!token) {
@@ -57,19 +64,25 @@ useEffect(() => {
             </div>
 
             <label className="filter-option">
-              <input type="checkbox" />
-              <span className="filter-text">Work from home</span>
-            </label>
+  <input
+    type="radio"
+    name="workMode"
+    checked={workMode === "Remote"}
+    onChange={() => setWorkMode("Remote")}
+  />
+  <span className="filter-text">Remote</span>
+</label>
 
-            <label className="filter-option">
-              <input type="checkbox" />
-              <span className="filter-text">Work from office</span>
-            </label>
+<label className="filter-option">
+  <input
+    type="radio"
+    name="workMode"
+    checked={workMode === "On-site"}
+    onChange={() => setWorkMode("On-site")}
+  />
+  <span className="filter-text">On-site</span>
+</label>
 
-            <label className="filter-option">
-              <input type="checkbox" />
-              <span className="filter-text">Work from field</span>
-            </label>
           </div>
 
           <div className="filter-group">

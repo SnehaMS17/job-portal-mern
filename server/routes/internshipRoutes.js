@@ -2,26 +2,18 @@ const express = require("express");
 const router = express.Router();
 const Internship = require("../models/Internship");
 
-/**
- * GET /api/internships
- * Query params:
- *  - search
- *  - workType
- *  - page
- *  - limit
- */
 router.get("/", async (req, res) => {
   try {
     const {
       search = "",
       workType,
+      workMode,
       page = 1,
       limit = 6,
     } = req.query;
 
     const query = {};
 
-    // 🔍 Search by title or company
     if (search) {
       query.$or = [
         { title: { $regex: search, $options: "i" } },
@@ -29,15 +21,17 @@ router.get("/", async (req, res) => {
       ];
     }
 
-    // 🎯 Work type filter
     if (workType) {
       query.workType = workType;
     }
 
-    const skip = (page - 1) * limit;
+    if (workMode) {
+      query.workMode = workMode;
+    }
+
+    const skip = (Number(page) - 1) * Number(limit);
 
     const total = await Internship.countDocuments(query);
-
     const internships = await Internship.find(query)
       .skip(skip)
       .limit(Number(limit))
